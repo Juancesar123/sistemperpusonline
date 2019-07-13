@@ -17,3 +17,4 @@ Route::middleware('auth:api')->get('/transaksi', function (Request $request) {
     return $request->user();
 });
 Route::resource('transaksi','TransaksiApiController');
+Route::get('transaksi/changestatus/{id}','TransaksiApiController@changeStatus');

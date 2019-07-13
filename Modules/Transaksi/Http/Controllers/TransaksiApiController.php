@@ -5,7 +5,7 @@ namespace Modules\Transaksi\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
-use Modules\Transaksi\TransaksiModel;
+use Modules\Transaksi\Entities\TransaksiModel;
 use Illuminate\Support\Facades\DB;
 class TransaksiApiController extends Controller
 {
@@ -18,6 +18,7 @@ class TransaksiApiController extends Controller
         $datatransaksi = DB::table('transaksi_pinjaman')
             ->join('buku', 'buku.id_buku', '=', 'transaksi_pinjaman.id_buku')
             ->join('siswa', 'siswa.id_siswa', '=', 'transaksi_pinjaman.id_siswa')
+            ->whereNull('deleted_at')
             ->select('transaksi_pinjaman.*', 'buku.judul', 'buku.kode','siswa.nama_siswa')
             ->get();
         return $datatransaksi;
@@ -87,6 +88,12 @@ class TransaksiApiController extends Controller
      */
     public function destroy($id)
     {
-        $transaksiObject = new TransaksiModel();
+        $transaksiObject = TransaksiModel::find($id);
+        $transaksiObject->delete();
+    }
+    public function changeStatus($id){
+        $transaksiObject = TransaksiModel::find($id);
+        $transaksiObject->status = '3';
+        $transaksiObject->save();
     }
 }

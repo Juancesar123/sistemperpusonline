@@ -31,13 +31,17 @@
                             <div class="form-group">
                                 <label>Nama Siswa </label>
                                 <select class="form-control" name="nama_siswa" id="nama_siswa">
-                                    <option></option>
+                                    @foreach ($datasiswa as $item)
+                                        <option value="{{$item->id_siswa}}">{{$item->nis}}-{{$item->nama_siswa}}</option>
+                                    @endforeach
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label>Kode Buku </label>
                                 <select class="form-control" name="kode_buku" id="kode_buku">
-                                    <option></option>
+                                    @foreach ($databuku as $item)
+                                        <option value="{{$item->id_buku}}">{{$item->kode}}-{{$item->judul}}</option>
+                                    @endforeach
                                 </select>
                             </div>
                             <div class="form-group">
@@ -73,6 +77,7 @@
 @stop
 @section('script')
 <script>
+    
     function myfunc(id){
             Swal.fire({
                 title: 'Are you sure?',
@@ -85,7 +90,7 @@
                 }).then((result) => {
                     if (result.value) {
                         $.ajax({
-                            url:'/api/buku/'+id,
+                            url:'/api/transaksi/'+id,
                             type:'DELETE',
                             success:function(){
                                 Swal.fire(
@@ -100,6 +105,22 @@
                 })
           
         }
+        function changeStatus(id){
+            $.ajax({
+                    url:'/api/transaksi/changestatus/'+id,
+                    method:'GET',
+                    contentType: false,
+                    processData:false,
+                    success:function(){
+                        Swal.fire(
+                                'Sukses!',
+                                'Data Sukses di Ubah!',
+                                'success'
+                            )
+                            table.ajax.reload();
+                    }
+                })
+        }
         var table =  $('#myTable').DataTable({
                         deferRender: true,
                         ajax: {
@@ -111,27 +132,44 @@
                         },
                         columns: [
                             { data: 'nama_siswa' },
-                            { data: 'judul_buku' },
+                            { data: 'judul' },
                             { data: 'tgl_pengembalian' },
                             { data: 'tgl_pinjaman' },
                             { data: 'kd_transaksi' },
-                            { data: 'status' },
                             {
                                 data: null,
                                 render: function ( data, type, row ) {
-                                    return "<button class='btn btn-danger' onclick='myfunc("+data.id_transaksi+")'>Delete</button>";
+                                    if(data.status == 1){
+                                        return "<span class='label label-warning'>Dipinjam</span>";
+                                    }else if(data.status == 2){
+                                        return "<span class='label label-danger'>Telat</span>";
+                                    }else if(data.status == 3){
+                                        return "<span class='label label-success'>Dikembalikan</span>";
+                                    }
+                                }
+                            },
+                            {
+                                data: null,
+                                render: function ( data, type, row ) {
+                                    if(data.status == 2){
+                                        return "<button class='btn btn-danger' onclick='myfunc("+data.id_transaksi+")'>Delete</button> <button class='btn btn-success' onclick='changeStatus("+data.id_transaksi+")'>Dikembalikan</button>";
+                                    }else if(data.status == 1){
+                                        return "<button class='btn btn-danger' onclick='myfunc("+data.id_transaksi+")'>Delete</button> <button class='btn btn-success' onclick='changeStatus("+data.id_transaksi+")'>Dikembalikan</button>";
+                                    }else{
+                                        return "<button class='btn btn-danger' onclick='myfunc("+data.id_transaksi+")'>Delete</button>";
+                                    }
                                 }
                             }
                         ]
                     });
 $('document').ready(function(){
     $('#nama_siswa').select2({
-        placeholder: 'This is my placeholder',
+        placeholder: 'Pilih Nama Siswa',
         allowClear: true,
         theme: "bootstrap"
     });
     $('#kode_buku').select2({
-        placeholder: 'This is my placeholder',
+        placeholder: 'Pilih Kode Buku',
         allowClear: true,
         theme: "bootstrap"
     });

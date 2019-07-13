@@ -25,7 +25,7 @@
     <ul class="sidebar-menu" data-widget="tree">
       <li class="header">MAIN NAVIGATION</li>
       <li>
-        <a href="pages/widgets.html">
+        <a href="{{route('homepage.index')}}">
           <i class="fa fa-home"></i> <span>Beranda</span>
         </a>
       </li>
@@ -39,6 +39,7 @@
         <ul class="treeview-menu">
           <li class="active"><a href="{{route('klasifikasi.index')}}"><i class="fa fa-circle-o"></i> Klasifikasi</a></li>
           <li><a href="{{route('buku.index')}}"><i class="fa fa-circle-o"></i> Data Buku</a></li>
+          <li><a href="{{route('siswa.index')}}"><i class="fa fa-circle-o"></i> Data Siswa</a></li>
         </ul>
       </li>
       <li class="active treeview">
@@ -50,12 +51,12 @@
         </a>
         <ul class="treeview-menu">
           <li class="active"><a href="{{route('transaksi.index')}}"><i class="fa fa-circle-o"></i> Transaksi Pinjaman</a></li>
-          <li><a href="{{route('detailtransaksi.index')}}"><i class="fa fa-circle-o"></i> Data detail transaksi</a></li>
+          <li><a href="{{route('detailtransaksi.index')}}"><i class="fa fa-circle-o"></i> Transaksi Denda</a></li>
         </ul>
       </li>
       <li>
         <a href="pages/widgets.html">
-          <i class="fa fa-th"></i> <span>Widgets</span>
+          <i class="fa fa-area-chart"></i> <span>Reporting Transaksi</span>
           <span class="pull-right-container">
             <small class="label pull-right bg-green">new</small>
           </span>

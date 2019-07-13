@@ -1,0 +1,14 @@
+{
+    "name": "DendaTransaksi",
+    "alias": "dendatransaksi",
+    "description": "",
+    "keywords": [],
+    "active": 1,
+    "order": 0,
+    "providers": [
+        "Modules\\DendaTransaksi\\Providers\\DendaTransaksiServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

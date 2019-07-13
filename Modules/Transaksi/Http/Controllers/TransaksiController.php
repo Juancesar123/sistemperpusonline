@@ -5,7 +5,8 @@ namespace Modules\Transaksi\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
-
+use Modules\Siswa\Entities\SiswaModel;
+use Modules\Buku\Entities\BukuModel;
 class TransaksiController extends Controller
 {
     /**
@@ -14,7 +15,9 @@ class TransaksiController extends Controller
      */
     public function index()
     {
-        return view('transaksi::index');
+        $datasiswa = SiswaModel::all();
+        $databuku = BukuModel::all();
+        return view('transaksi::index',['datasiswa' => $datasiswa,'databuku'=>$databuku]);
     }
 
     /**

@@ -12,5 +12,5 @@
 */
 
 Route::prefix('homepage')->group(function() {
-    Route::get('/', 'HomepageController@index');
+    Route::get('/', 'HomepageController@index')->name('homepage.index');
 });
