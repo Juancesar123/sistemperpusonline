@@ -11,6 +11,6 @@
 |
 */
 
-Route::prefix('dendatransaksi')->group(function() {
-    Route::get('/', 'DendaTransaksiController@index');
+Route::prefix('transaksi/dendatransaksi')->group(function() {
+    Route::get('/', 'DendaTransaksiController@index')->name('denda.index');
 });

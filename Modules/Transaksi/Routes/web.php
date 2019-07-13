@@ -11,6 +11,6 @@
 |
 */
 
-Route::prefix('transaksi')->group(function() {
+Route::prefix('transaksi/transaksipinjaman')->group(function() {
     Route::get('/', 'TransaksiController@index')->name('transaksi.index');
 });

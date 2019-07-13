@@ -16,3 +16,5 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/dendatransaksi', function (Request $request) {
     return $request->user();
 });
+Route::resource('denda','DendaTransaksiApiController');
+Route::get('denda/changestatus/{id}','DendaTransaksiApiController@changeStatus');

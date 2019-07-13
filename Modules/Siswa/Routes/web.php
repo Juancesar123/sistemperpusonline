@@ -11,6 +11,6 @@
 |
 */
 
-Route::prefix('siswa')->group(function() {
+Route::prefix('masterdata/siswa')->group(function() {
     Route::get('/', 'SiswaController@index')->name('siswa.index');
 });

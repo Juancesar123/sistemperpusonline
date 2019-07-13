@@ -11,6 +11,6 @@
 |
 */
 
-Route::prefix('buku')->group(function() {
+Route::prefix('masterdata/buku')->group(function() {
     Route::get('/', 'BukuController@index')->name('buku.index');
 });

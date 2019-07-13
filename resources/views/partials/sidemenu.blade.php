@@ -3,10 +3,10 @@
     <!-- Sidebar user panel -->
     <div class="user-panel">
       <div class="pull-left image">
-        <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+        <img src="{{asset('images/user.png')}}" class="img-circle" alt="User Image">
       </div>
       <div class="pull-left info">
-        <p>Alexander Pierce</p>
+        <p>Administrator</p>
         <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
       </div>
     </div>
@@ -24,12 +24,12 @@
     <!-- sidebar menu: : style can be found in sidebar.less -->
     <ul class="sidebar-menu" data-widget="tree">
       <li class="header">MAIN NAVIGATION</li>
-      <li>
+      <li class="{{ Request::is('homepage') ? 'active' : '' }}">
         <a href="{{route('homepage.index')}}">
           <i class="fa fa-home"></i> <span>Beranda</span>
         </a>
       </li>
-      <li class="active treeview">
+      <li class="{{ Request::is('masterdata*') ? 'active' : '' }} treeview">
         <a href="#">
           <i class="fa fa-database"></i> <span>Master Data</span>
           <span class="pull-right-container">
@@ -37,12 +37,12 @@
           </span>
         </a>
         <ul class="treeview-menu">
-          <li class="active"><a href="{{route('klasifikasi.index')}}"><i class="fa fa-circle-o"></i> Klasifikasi</a></li>
-          <li><a href="{{route('buku.index')}}"><i class="fa fa-circle-o"></i> Data Buku</a></li>
-          <li><a href="{{route('siswa.index')}}"><i class="fa fa-circle-o"></i> Data Siswa</a></li>
+          <li class="{{ Request::is('masterdata/klasifikasi') ? 'active' : '' }}"><a href="{{route('klasifikasi.index')}}"><i class="fa fa-circle-o"></i> Klasifikasi</a></li>
+          <li class="{{ Request::is('masterdata/buku') ? 'active' : '' }}"><a href="{{route('buku.index')}}"><i class="fa fa-circle-o"></i> Data Buku</a></li>
+          <li class="{{ Request::is('masterdata/siswa') ? 'active' : '' }}"><a href="{{route('siswa.index')}}"><i class="fa fa-circle-o"></i> Data Siswa</a></li>
         </ul>
       </li>
-      <li class="active treeview">
+      <li class="{{ Request::is('transaksi*') ? 'active' : '' }} treeview">
         <a href="#">
           <i class="fa fa-exchange"></i> <span>Transaksi</span>
           <span class="pull-right-container">
@@ -50,8 +50,8 @@
           </span>
         </a>
         <ul class="treeview-menu">
-          <li class="active"><a href="{{route('transaksi.index')}}"><i class="fa fa-circle-o"></i> Transaksi Pinjaman</a></li>
-          <li><a href="{{route('detailtransaksi.index')}}"><i class="fa fa-circle-o"></i> Transaksi Denda</a></li>
+          <li class="{{ Request::is('transaksi/transaksipinjaman') ? 'active' : '' }}"><a href="{{route('transaksi.index')}}"><i class="fa fa-circle-o"></i> Transaksi Pinjaman</a></li>
+          <li class="{{ Request::is('transaksi/dendatransaksi') ? 'active' : '' }}"><a href="{{route('denda.index')}}"><i class="fa fa-circle-o"></i> Transaksi Denda</a></li>
         </ul>
       </li>
       <li>

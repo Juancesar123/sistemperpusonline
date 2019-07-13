@@ -5,7 +5,8 @@ namespace Modules\DendaTransaksi\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
-
+use Illuminate\Support\Facades\DB;
+use Modules\DendaTransaksi\Entities\DendaTransaksiModel;
 class DendaTransaksiApiController extends Controller
 {
     /**
@@ -14,7 +15,13 @@ class DendaTransaksiApiController extends Controller
      */
     public function index()
     {
-        return view('dendatransaksi::index');
+        $users = DB::table('denda')->join('transaksi_pinjaman', 'transaksi_pinjaman.id_transaksi', '=', 'denda.id_transaksi')
+        ->join('siswa', 'siswa.id_siswa', '=', 'transaksi_pinjaman.id_siswa')
+        ->join('buku', 'buku.id_buku', '=', 'transaksi_pinjaman.id_buku')
+        ->whereNull('denda.deleted_at')
+        ->select('denda.*', 'siswa.nama_siswa', 'buku.judul')
+        ->get();
+        return $users;
     }
 
     /**
@@ -74,6 +81,12 @@ class DendaTransaksiApiController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $dendaObject = DendaTransaksiModel::find($id);
+        $dendaObject->delete();
+    }
+    public function changeStatus($id){
+        $dendaObject = DendaTransaksiModel::find($id);
+        $dendaObject->status = '2';
+        $dendaObject->save();
     }
 }

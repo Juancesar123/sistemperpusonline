@@ -11,6 +11,6 @@
 |
 */
 
-Route::prefix('klasifikasi')->group(function() {
+Route::prefix('masterdata/klasifikasi')->group(function() {
     Route::get('/', 'KlasifikasiController@index')->name('klasifikasi.index');
 });
