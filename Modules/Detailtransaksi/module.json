@@ -1,0 +1,14 @@
+{
+    "name": "Detailtransaksi",
+    "alias": "detailtransaksi",
+    "description": "",
+    "keywords": [],
+    "active": 1,
+    "order": 0,
+    "providers": [
+        "Modules\\Detailtransaksi\\Providers\\DetailtransaksiServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

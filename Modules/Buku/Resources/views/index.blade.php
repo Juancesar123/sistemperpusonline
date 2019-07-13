@@ -338,7 +338,7 @@ $('document').ready(function(){
             submitHandler: function(form) {
                 var id = $('#idbuku').val();
                 var data;
-                data = new FormData();
+                data = new FormData();          
                 
                 data.append('_method', 'PUT');
                 data.append( 'judul', $( '#juduledit' ).val());

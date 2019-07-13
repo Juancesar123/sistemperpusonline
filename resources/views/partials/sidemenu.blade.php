@@ -41,6 +41,18 @@
           <li><a href="{{route('buku.index')}}"><i class="fa fa-circle-o"></i> Data Buku</a></li>
         </ul>
       </li>
+      <li class="active treeview">
+        <a href="#">
+          <i class="fa fa-exchange"></i> <span>Transaksi</span>
+          <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
+        </a>
+        <ul class="treeview-menu">
+          <li class="active"><a href="{{route('transaksi.index')}}"><i class="fa fa-circle-o"></i> Transaksi Pinjaman</a></li>
+          <li><a href="{{route('detailtransaksi.index')}}"><i class="fa fa-circle-o"></i> Data detail transaksi</a></li>
+        </ul>
+      </li>
       <li>
         <a href="pages/widgets.html">
           <i class="fa fa-th"></i> <span>Widgets</span>
