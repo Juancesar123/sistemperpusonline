@@ -62,6 +62,14 @@
           </span>
         </a>
       </li>
+      <li class="{{ Request::is('bukutamu') ? 'active' : '' }}">
+          <a href="{{route('bukutamu.index')}}">
+            <i class="fa fa-book"></i> <span>Buku Tamu</span>
+            <span class="pull-right-container">
+              <small class="label pull-right bg-green">new</small>
+            </span>
+          </a>
+        </li>
     </ul>
   </section>
   <!-- /.sidebar -->

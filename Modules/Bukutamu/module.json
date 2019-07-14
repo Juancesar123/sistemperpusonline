@@ -1,0 +1,14 @@
+{
+    "name": "Bukutamu",
+    "alias": "bukutamu",
+    "description": "",
+    "keywords": [],
+    "active": 1,
+    "order": 0,
+    "providers": [
+        "Modules\\Bukutamu\\Providers\\BukutamuServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}
