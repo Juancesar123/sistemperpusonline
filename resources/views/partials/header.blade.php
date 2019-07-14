@@ -17,7 +17,7 @@
         <li class="dropdown user user-menu">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
             <img src="{{asset('images/user.png')}}" class="user-image" alt="User Image">
-            <span class="hidden-xs">Administrator</span>
+            <span class="hidden-xs">{{Auth::user()->name}}</span>
           </a>
           <ul class="dropdown-menu">
             <!-- User image -->
@@ -25,14 +25,17 @@
               <img src="{{asset('images/user.png')}}" class="img-circle" alt="User Image">
 
               <p>
-                Administrator
+                  {{Auth::user()->name}}
                 <small>Member since 2019</small>
               </p>
             </li>
             <!-- Menu Footer-->
             <li class="user-footer">
               <div class="pull-right">
-                <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                <form action="{{route('logout')}}" method="POST">
+                  {{csrf_field()}}
+                  <button class="btn btn-default btn-flat" type="submit">Sign out</button>
+                </form>
               </div>
             </li>
           </ul>
