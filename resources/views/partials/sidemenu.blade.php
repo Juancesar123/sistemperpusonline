@@ -54,8 +54,8 @@
           <li class="{{ Request::is('transaksi/dendatransaksi') ? 'active' : '' }}"><a href="{{route('denda.index')}}"><i class="fa fa-circle-o"></i> Transaksi Denda</a></li>
         </ul>
       </li>
-      <li>
-        <a href="pages/widgets.html">
+      <li class="{{ Request::is('reportingtransaksi') ? 'active' : '' }}">
+        <a href="{{route('reporting.index')}}">
           <i class="fa fa-area-chart"></i> <span>Reporting Transaksi</span>
           <span class="pull-right-container">
             <small class="label pull-right bg-green">new</small>
